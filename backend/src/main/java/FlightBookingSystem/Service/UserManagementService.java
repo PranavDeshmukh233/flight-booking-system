@@ -1,8 +1,8 @@
-package FlightBookingSystem.Auth.Service;
+package FlightBookingSystem.Service;
 
-import FlightBookingSystem.Auth.DTO.ReqRes;
-import FlightBookingSystem.Auth.Entity.User;
-import FlightBookingSystem.Auth.Repository.UserRepo;
+import FlightBookingSystem.DTO.ReqRes;
+import FlightBookingSystem.Entity.User;
+import FlightBookingSystem.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

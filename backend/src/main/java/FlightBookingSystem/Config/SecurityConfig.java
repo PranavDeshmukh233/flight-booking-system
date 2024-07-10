@@ -1,6 +1,6 @@
-package FlightBookingSystem.Auth.Config;
+package FlightBookingSystem.Config;
 
-import FlightBookingSystem.Auth.Service.UsersDetailsService;
+import FlightBookingSystem.Service.UsersDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

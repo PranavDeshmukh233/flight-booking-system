@@ -1,11 +1,10 @@
-package FlightBookingSystem.Auth.Controller;
+package FlightBookingSystem.Controller;
 
-import FlightBookingSystem.Auth.DTO.ReqRes;
-import FlightBookingSystem.Auth.Entity.User;
-import FlightBookingSystem.Auth.Service.UserManagementService;
+import FlightBookingSystem.DTO.ReqRes;
+import FlightBookingSystem.Entity.User;
+import FlightBookingSystem.Service.UserManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;

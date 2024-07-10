@@ -1,6 +1,6 @@
-package FlightBookingSystem.Auth.Repository;
+package FlightBookingSystem.Repository;
 
-import FlightBookingSystem.Auth.Entity.User;
+import FlightBookingSystem.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import "../../styles/AuthStyles.css";
 import Layout from "../../Layout/Layout";
+import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setAuthInfo, auth } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch("http://localhost:1010/auth/login", {
         method: "POST",
@@ -20,21 +21,26 @@ const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-  
+
       const data = await response.json();
       console.log(data);
-      console.log("response: " + response);
-      
-      if (data.statusCode == 200) {
+
+      if (data.statusCode === 200) {
         alert("Login successful!");
+        setAuthInfo({ token: data.token, role: data.role });
         navigate("/");
       } else {
-        console.error("Login failed:", data.message); 
+        alert(`Login failed: ${data.message}`);
       }
     } catch (error) {
-      console.error("Login failed:", error.message); 
+      console.error("Login failed:", error.message);
+      alert(`Login failed: ${error.message}`);
     }
   };
+
+  useEffect(() => {
+    console.log("Auth after update:", auth);
+  }, [auth]);
 
   return (
     <Layout title="Login">

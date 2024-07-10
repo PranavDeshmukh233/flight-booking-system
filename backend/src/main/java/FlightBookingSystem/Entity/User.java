@@ -1,4 +1,4 @@
-package FlightBookingSystem.Auth.Entity;
+package FlightBookingSystem.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

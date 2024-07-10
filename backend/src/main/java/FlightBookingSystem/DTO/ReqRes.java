@@ -1,6 +1,6 @@
-package FlightBookingSystem.Auth.DTO;
+package FlightBookingSystem.DTO;
 
-import FlightBookingSystem.Auth.Entity.User;
+import FlightBookingSystem.Entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
