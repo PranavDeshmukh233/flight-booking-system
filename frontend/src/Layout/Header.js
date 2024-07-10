@@ -19,20 +19,15 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-              Flight Booking System
+              SkyTrip
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to="/login" className="nav-link ">
+                <NavLink to="/" className="nav-link ">
                   Home
                 </NavLink>
               </li>
               <>
-                <li className="nav-item">
-                  <NavLink to="/" className="nav-link">
-                    Register
-                  </NavLink>
-                </li>
                 <li className="nav-item">
                   <NavLink to="/login" className="nav-link">
                     Login

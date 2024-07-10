@@ -3,14 +3,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
-import ForgotPasssword from "./pages/Auth/ForgotPasssword";
+import Home from "./pages/Auth/Home";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPasssword />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
