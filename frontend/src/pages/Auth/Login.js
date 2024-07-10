@@ -1,8 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import Cookies from "js-cookie";
 import "../../styles/AuthStyles.css";
 import Layout from "../../Layout/Layout";
-import { AuthContext } from '../../Context/AuthContext';
+import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,14 @@ const Login = () => {
 
       if (data.statusCode === 200) {
         alert("Login successful!");
-        setAuthInfo({ token: data.token, role: data.role });
+        const authObject = {
+          email: data.users.email,
+          id: data.users.id,
+          token: data.token,
+          role: data.users.role,
+        };
+        setAuthInfo(authObject);
+        Cookies.set("auth", JSON.stringify(authObject), { expires: 1 }); // Expires in 1 day
         navigate("/");
       } else {
         alert(`Login failed: ${data.message}`);

@@ -49,6 +49,7 @@ public class UserManagementService {
         return response;
     }
 
+
     public ReqRes login(ReqRes loginRequest){
         ReqRes response = new ReqRes();
         try {
@@ -59,10 +60,10 @@ public class UserManagementService {
             var refreshToken = jwtUtils.generateRefreshToken(new HashMap<>(), user);
             response.setStatusCode(200);
             response.setToken(jwt);
-            response.setRole(user.getRole());
             response.setRefreshToken(refreshToken);
             response.setExpirationTime("24Hrs");
             response.setMessage("Successfully Logged In");
+            response.setUsers(user);  // Set the user object here
 
         } catch (Exception e) {
             response.setStatusCode(500);
