@@ -23,23 +23,26 @@ public class FlightService {
 
     public Flight getFlightById(Long id) {
         return flightRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Flight not found"));
+                .orElseThrow(() -> new RuntimeException("Flight not found!"));
     }
 
     public Flight updateFlight(Long id, Flight flight) {
         Flight existingFlight = flightRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Flight not found"));
+                .orElseThrow(() -> new RuntimeException("Flight not found!"));
         existingFlight.setFlightNumber(flight.getFlightNumber());
         existingFlight.setDepartureTime(flight.getDepartureTime());
         existingFlight.setArrivalTime(flight.getArrivalTime());
-        existingFlight.setAirplaneRegistrationNumber(flight.getAirplaneRegistrationNumber());
+        existingFlight.setAirplane(flight.getAirplane());
         existingFlight.setSourceAirport(flight.getSourceAirport());
         existingFlight.setDestinationAirport(flight.getDestinationAirport());
-        existingFlight.setFlightClass(flight.getFlightClass());
-        existingFlight.setSeatFare(flight.getSeatFare());
-        existingFlight.setTotalPassengers(flight.getTotalPassengers());
-        existingFlight.setBookingTime(flight.getBookingTime());
+        existingFlight.setBusinessClassSeats(flight.getBusinessClassSeats());
+        existingFlight.setBusinessClassPrice(flight.getBusinessClassPrice());
+        existingFlight.setFirstClassSeats(flight.getFirstClassSeats());
+        existingFlight.setFirstClassPrice(flight.getFirstClassPrice());
+        existingFlight.setEconomyClassSeats(flight.getEconomyClassSeats());
+        existingFlight.setEconomyClassPrice(flight.getEconomyClassPrice());
         existingFlight.setStatus(flight.getStatus());
+        existingFlight.setAdminId(flight.getAdminId());
         return flightRepository.save(existingFlight);
     }
 
@@ -48,6 +51,6 @@ public class FlightService {
     }
 
     public List<Flight> searchFlights(String sourceAirport, String destinationAirport) {
-        return flightRepository.findFlightsBySourceDestinationAndDateRange(sourceAirport, destinationAirport);
+        return flightRepository.findFlightsBySourceDestination(sourceAirport, destinationAirport);
     }
 }

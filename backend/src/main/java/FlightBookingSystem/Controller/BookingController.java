@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user/bookings")
+@RequestMapping("/user/booking")
 public class BookingController {
 
     @Autowired
     private BookingService bookingService;
 
     @PostMapping("/add")
-    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) {
+    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking, @RequestParam Long userId) {
+        booking.setUserId(userId);
         Booking addedBooking = bookingService.addBooking(booking);
         return new ResponseEntity<>(addedBooking, HttpStatus.CREATED);
     }
@@ -33,12 +34,6 @@ public class BookingController {
         Booking booking = bookingService.getBookingById(id);
         return new ResponseEntity<>(booking, HttpStatus.OK);
     }
-
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking booking) {
-//        Booking updatedBooking = bookingService.updateBooking(id, booking);
-//        return new ResponseEntity<>(updatedBooking, HttpStatus.OK);
-//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {

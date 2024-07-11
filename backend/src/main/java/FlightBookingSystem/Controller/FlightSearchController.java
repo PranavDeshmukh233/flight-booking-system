@@ -20,7 +20,7 @@ public class FlightSearchController {
     @Autowired
     private FlightService flightService;
 
-    @GetMapping("/user/flights/search")
+    @GetMapping("/user/flight/search")
     public ResponseEntity<List<Flight>> searchFlights(
             @RequestParam String sourceAirport,
             @RequestParam String destinationAirport) {
@@ -30,7 +30,7 @@ public class FlightSearchController {
             return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 
-    @GetMapping("/admin/flights/search")
+    @GetMapping("/admin/flight/search")
     public ResponseEntity<List<Flight>> searchFlightsAdmin(
             @RequestParam String sourceAirport,
             @RequestParam String destinationAirport) {

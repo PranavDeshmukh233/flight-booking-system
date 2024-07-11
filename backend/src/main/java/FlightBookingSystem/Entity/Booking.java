@@ -9,13 +9,13 @@ import jakarta.persistence.Id;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    private String bookingId;
+    private Long userId;
     private String passengerName;
     private String passengerContact;
     private String flightNumber;
-    private String airplaneRegistrationNumber;
+    private String airplane;
     private String departureTime;
     private String arrivalTime;
     private String sourceAirport;
@@ -23,33 +23,32 @@ public class Booking {
     private String flightClass;
     private double seatFare;
     private int noofseat;
-
-    public int getNoofseat() {
-        return noofseat;
-    }
-
-    public void setNoofseat(int noofseat) {
-        this.noofseat = noofseat;
-    }
-
     private String bookingTime;
 
     // Getters and setters
 
-    public String getBookingId() {
-        return bookingId;
-    }
-
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
-    }
-
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getPassengerName() {
+        return passengerName;
+    }
+
+    public void setPassengerName(String passengerName) {
+        this.passengerName = passengerName;
     }
 
     public String getPassengerContact() {
@@ -68,12 +67,12 @@ public class Booking {
         this.flightNumber = flightNumber;
     }
 
-    public String getAirplaneRegistrationNumber() {
-        return airplaneRegistrationNumber;
+    public String getAirplane() {
+        return airplane;
     }
 
-    public void setAirplaneRegistrationNumber(String airplaneRegistrationNumber) {
-        this.airplaneRegistrationNumber = airplaneRegistrationNumber;
+    public void setAirplane(String airplane) {
+        this.airplane = airplane;
     }
 
     public String getDepartureTime() {
@@ -124,19 +123,19 @@ public class Booking {
         this.seatFare = seatFare;
     }
 
+    public int getNoofseat() {
+        return noofseat;
+    }
+
+    public void setNoofseat(int noofseat) {
+        this.noofseat = noofseat;
+    }
+
     public String getBookingTime() {
         return bookingTime;
     }
 
     public void setBookingTime(String bookingTime) {
         this.bookingTime = bookingTime;
-    }
-
-    public String getPassengerName() {
-        return passengerName;
-    }
-
-    public void setPassengerName(String passengerName) {
-        this.passengerName = passengerName;
     }
 }

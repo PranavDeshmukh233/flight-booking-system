@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/flights")
+@RequestMapping("/admin/flight")
 public class FlightController {
 
     @Autowired
     private FlightService flightService;
 
     @PostMapping("/add")
-    public ResponseEntity<Flight> addFlight(@RequestBody Flight flight) {
+    public ResponseEntity<Flight> addFlight(@RequestBody Flight flight, @RequestParam Long adminId) {
+        flight.setAdminId(adminId);
         Flight addedFlight = flightService.addFlight(flight);
         return new ResponseEntity<>(addedFlight, HttpStatus.CREATED);
     }

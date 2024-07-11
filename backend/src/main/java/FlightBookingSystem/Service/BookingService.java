@@ -23,17 +23,16 @@ public class BookingService {
 
     public Booking getBookingById(Long id) {
         return bookingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Booking not found"));
+                .orElseThrow(() -> new RuntimeException("Booking not found!"));
     }
 
     public Booking updateBooking(Long id, Booking booking) {
         Booking existingBooking = bookingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Booking not found"));
-        existingBooking.setBookingId(booking.getBookingId());
+                .orElseThrow(() -> new RuntimeException("Booking not found!"));
         existingBooking.setPassengerName(booking.getPassengerName());
         existingBooking.setPassengerContact(booking.getPassengerContact());
         existingBooking.setFlightNumber(booking.getFlightNumber());
-        existingBooking.setAirplaneRegistrationNumber(booking.getAirplaneRegistrationNumber());
+        existingBooking.setAirplane(booking.getAirplane());
         existingBooking.setDepartureTime(booking.getDepartureTime());
         existingBooking.setArrivalTime(booking.getArrivalTime());
         existingBooking.setSourceAirport(booking.getSourceAirport());

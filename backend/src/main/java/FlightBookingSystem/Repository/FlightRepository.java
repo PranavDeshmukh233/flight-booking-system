@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
     @Query("SELECT f FROM Flight f WHERE f.sourceAirport = :sourceAirport AND f.destinationAirport = :destinationAirport")
-    List<Flight> findFlightsBySourceDestinationAndDateRange(@Param("sourceAirport") String sourceAirport,
+    List<Flight> findFlightsBySourceDestination(@Param("sourceAirport") String sourceAirport,
                                                             @Param("destinationAirport") String destinationAirport);
 }

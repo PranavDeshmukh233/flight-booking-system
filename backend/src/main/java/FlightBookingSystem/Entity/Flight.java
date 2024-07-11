@@ -13,98 +13,37 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long adminId;
     private String flightNumber;
     private Date departureTime;
     private Date arrivalTime;
-    private String airplaneRegistrationNumber;
+    private String airplane;
     private String sourceAirport;
     private String destinationAirport;
-    private String flightClass; // Business, First Class, Economy
-    private double seatFare;
-    private int totalPassengers;
-    private Date bookingTime;
+    private int businessClassSeats;
+    private double businessClassPrice;
+    private int firstClassSeats;
+    private double firstClassPrice;
+    private int economyClassSeats;
+    private double economyClassPrice;
     private String status; // Active, Cancelled, Completed
 
     // Getters and setters
 
-    public String getStatus() {
-        return status;
+    public Long getId() {
+        return id;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Date getBookingTime() {
-        return bookingTime;
+    public Long getAdminId() {
+        return adminId;
     }
 
-    public void setBookingTime(Date bookingTime) {
-        this.bookingTime = bookingTime;
-    }
-
-    public int getTotalPassengers() {
-        return totalPassengers;
-    }
-
-    public void setTotalPassengers(int totalPassengers) {
-        this.totalPassengers = totalPassengers;
-    }
-
-    public double getSeatFare() {
-        return seatFare;
-    }
-
-    public void setSeatFare(double seatFare) {
-        this.seatFare = seatFare;
-    }
-
-    public String getFlightClass() {
-        return flightClass;
-    }
-
-    public void setFlightClass(String flightClass) {
-        this.flightClass = flightClass;
-    }
-
-    public String getDestinationAirport() {
-        return destinationAirport;
-    }
-
-    public void setDestinationAirport(String destinationAirport) {
-        this.destinationAirport = destinationAirport;
-    }
-
-    public String getSourceAirport() {
-        return sourceAirport;
-    }
-
-    public void setSourceAirport(String sourceAirport) {
-        this.sourceAirport = sourceAirport;
-    }
-
-    public String getAirplaneRegistrationNumber() {
-        return airplaneRegistrationNumber;
-    }
-
-    public void setAirplaneRegistrationNumber(String airplaneRegistrationNumber) {
-        this.airplaneRegistrationNumber = airplaneRegistrationNumber;
-    }
-
-    public Date getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public void setArrivalTime(Date arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
-    public Date getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(Date departureTime) {
-        this.departureTime = departureTime;
+    public void setAdminId(Long adminId) {
+        this.adminId = adminId;
     }
 
     public String getFlightNumber() {
@@ -115,11 +54,99 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
-    public Long getId() {
-        return id;
+    public Date getDepartureTime() {
+        return departureTime;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDepartureTime(Date departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public Date getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(Date arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public String getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(String airplane) {
+        this.airplane = airplane;
+    }
+
+    public String getSourceAirport() {
+        return sourceAirport;
+    }
+
+    public void setSourceAirport(String sourceAirport) {
+        this.sourceAirport = sourceAirport;
+    }
+
+    public String getDestinationAirport() {
+        return destinationAirport;
+    }
+
+    public void setDestinationAirport(String destinationAirport) {
+        this.destinationAirport = destinationAirport;
+    }
+
+    public int getBusinessClassSeats() {
+        return businessClassSeats;
+    }
+
+    public void setBusinessClassSeats(int businessClassSeats) {
+        this.businessClassSeats = businessClassSeats;
+    }
+
+    public double getBusinessClassPrice() {
+        return businessClassPrice;
+    }
+
+    public void setBusinessClassPrice(double businessClassPrice) {
+        this.businessClassPrice = businessClassPrice;
+    }
+
+    public int getFirstClassSeats() {
+        return firstClassSeats;
+    }
+
+    public void setFirstClassSeats(int firstClassSeats) {
+        this.firstClassSeats = firstClassSeats;
+    }
+
+    public double getFirstClassPrice() {
+        return firstClassPrice;
+    }
+
+    public void setFirstClassPrice(double firstClassPrice) {
+        this.firstClassPrice = firstClassPrice;
+    }
+
+    public int getEconomyClassSeats() {
+        return economyClassSeats;
+    }
+
+    public void setEconomyClassSeats(int economyClassSeats) {
+        this.economyClassSeats = economyClassSeats;
+    }
+
+    public double getEconomyClassPrice() {
+        return economyClassPrice;
+    }
+
+    public void setEconomyClassPrice(double economyClassPrice) {
+        this.economyClassPrice = economyClassPrice;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
