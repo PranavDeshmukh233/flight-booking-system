@@ -10,38 +10,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/admin/flight")
+//@RequestMapping("/admin/flight")
 public class FlightController {
 
     @Autowired
     private FlightService flightService;
 
-    @PostMapping("/add")
+    @PostMapping("/admin/flight/add")
     public ResponseEntity<Flight> addFlight(@RequestBody Flight flight, @RequestParam Long adminId) {
         flight.setAdminId(adminId);
         Flight addedFlight = flightService.addFlight(flight);
         return new ResponseEntity<>(addedFlight, HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/adminuser/flight/all")
     public ResponseEntity<List<Flight>> getAllFlights() {
         List<Flight> flights = flightService.getAllFlights();
         return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/adminuser/flight/{id}")
     public ResponseEntity<Flight> getFlightById(@PathVariable Long id) {
         Flight flight = flightService.getFlightById(id);
         return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/admin/flight/update/{id}")
     public ResponseEntity<Flight> updateFlight(@PathVariable Long id, @RequestBody Flight flight) {
         Flight updatedFlight = flightService.updateFlight(id, flight);
         return new ResponseEntity<>(updatedFlight, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/admin/flight/delete/{id}")
     public ResponseEntity<Void> deleteFlight(@PathVariable Long id) {
         flightService.deleteFlight(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

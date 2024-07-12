@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import { AuthContext } from '../../Context/AuthContext';
-import '../../styles/FlightSearch.css'; 
+import '../../Styles/FlightSearch.css'; 
 
 const FlightSearch = () => {
   const [sourceAirport, setSourceAirport] = useState('');

@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     id: null,
     token: null,
     role: null,
+    name: null,
   });
 
   useEffect(() => {
@@ -18,10 +19,10 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const setAuthInfo = ({ email, id, token, role }) => {
-    const authObject = { email, id, token, role };
+  const setAuthInfo = ({ email, id, token, role, name }) => {
+    const authObject = { email, id, token, role, name };
     setAuth(authObject);
-    Cookies.set('auth', JSON.stringify(authObject), { expires: 1 }); // Expires in 1 day
+    Cookies.set('auth', JSON.stringify(authObject), { expires: 1 }); 
   };
 
   const clearAuthInfo = () => {
@@ -30,6 +31,7 @@ export const AuthProvider = ({ children }) => {
       id: null,
       token: null,
       role: null,
+      name: null
     });
     Cookies.remove('auth');
   };

@@ -1,10 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import "../../styles/AuthStyles.css";
+import "../../Styles/AuthStyles.css";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
-import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,22 +27,23 @@ const Login = () => {
       console.log(data);
 
       if (data.statusCode === 200) {
-        toast.success("Login Successfully");
+        alert("Login successful!");
         const authObject = {
           email: data.users.email,
           id: data.users.id,
           token: data.token,
           role: data.users.role,
+          name: data.users.name
         };
         setAuthInfo(authObject);
         Cookies.set("auth", JSON.stringify(authObject), { expires: 1 }); // Expires in 1 day
         navigate("/");
       } else {
-        toast.error(`Login failed: ${data.message}`);
+        alert(`Login failed: ${data.message}`);
       }
     } catch (error) {
       console.error("Login failed:", error.message);
-      toast.error(`Login failed: ${error.message}`);
+      alert(`Login failed: ${error.message}`);
     }
   };
 
