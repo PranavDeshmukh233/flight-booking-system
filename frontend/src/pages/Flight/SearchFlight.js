@@ -41,7 +41,7 @@ const FlightSearch = () => {
   };
 
   const handleBook = (flightId) => {
-    navigate(`/book/${flightId}`);
+    navigate(`/bookFlight/${flightId}`);
   };
 
   return (

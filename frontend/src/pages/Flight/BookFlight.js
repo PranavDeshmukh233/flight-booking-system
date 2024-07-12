@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import { AuthContext } from '../../Context/AuthContext';
-// import '../../styles/Booking.css';
+import '../../Styles/Booking.css';
 
 const BookingPage = () => {
   const { flightId } = useParams();
@@ -27,7 +27,7 @@ const BookingPage = () => {
           throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json();
-        console.log('Fetched flight details:', data); // Debugging log
+        // console.log('Fetched flight details:', data); 
         setFlightDetails(data);
       } catch (error) {
         console.error('Failed to fetch flight details:', error.message);
@@ -50,7 +50,6 @@ const BookingPage = () => {
   }, [flightClass, noOfSeats, flightDetails]);
 
   useEffect(() => {
-    // Pre-fill passenger name with auth name
     if (auth.name) {
       setPassengerName(auth.name);
     }
@@ -100,72 +99,109 @@ const BookingPage = () => {
 
   return (
     <Layout title="Book Flight">
-      <div className="form-container" style={{ minHeight: '90vh' }}>
-        <h5 className="title">Book Flight</h5>
-        <form onSubmit={handleBooking} className="booking-form">
-          <div className="form-group">
-            <label>Flight Number: {flightDetails.flightNumber || 'Loading...'}</label>
+      <div className="container mt-5">
+        <div className="card">
+          <div className="card-header text-center">
+            <h5 className="card-title">Flight : {flightDetails.flightNumber || 'Loading...'}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{flightDetails.airplane || 'Loading...'}</h6>
           </div>
-          <div className="form-group">
-            <label>Departure Time: {flightDetails.departureTime ? new Date(flightDetails.departureTime).toLocaleString() : 'Loading...'}</label>
+          <div className="card-body">
+          <div className="row">
+              <div className="col-md-6">
+                <p className="card-text">
+                  <strong>From</strong> 
+                </p>
+              </div>
+              <div className="col-md-6">
+                <p className="card-text">
+                  <strong>To</strong> 
+                </p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                <p className="card-text">
+                  {flightDetails.sourceAirport || 'Loading...'}
+                </p>
+              </div>
+              <div className="col-md-6">
+                <p className="card-text">
+                  {flightDetails.destinationAirport || 'Loading...'}
+                </p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                <p className="card-text">
+                  {flightDetails.departureTime ? new Date(flightDetails.departureTime).toLocaleString() : 'Loading...'}
+                </p>
+              </div>
+              <div className="col-md-6">
+                <p className="card-text">
+                  {flightDetails.arrivalTime ? new Date(flightDetails.arrivalTime).toLocaleString() : 'Loading...'}
+                </p>
+              </div>
+            </div>
+    
+            <form onSubmit={handleBooking}>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Passenger Name:</label>
+                    <input
+                      type="text"
+                      value={passengerName}
+                      onChange={(e) => setPassengerName(e.target.value)}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Passenger Contact:</label>
+                    <input
+                      type="text"
+                      value={passengerContact}
+                      onChange={(e) => setPassengerContact(e.target.value)}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Class:</label>
+                    <select value={flightClass} onChange={(e) => setFlightClass(e.target.value)} className="form-control">
+                      <option value="Economy">Economy</option>
+                      <option value="First Class">First Class</option>
+                      <option value="Business">Business</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label>Number of Seats:</label>
+                    <input
+                      type="number"
+                      value={noOfSeats}
+                      onChange={(e) => setNoOfSeats(Number(e.target.value))}
+                      className="form-control"
+                      min="1"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Total Fare: {seatFare}</label>
+              </div>
+              <button type="submit" className="btn btn-primary btn-block">Book</button>
+            </form>
           </div>
-          <div className="form-group">
-            <label>Arrival Time: {flightDetails.arrivalTime ? new Date(flightDetails.arrivalTime).toLocaleString() : 'Loading...'}</label>
-          </div>
-          <div className="form-group">
-            <label>Airplane: {flightDetails.airplane || 'Loading...'}</label>
-          </div>
-          <div className="form-group">
-            <label>Source Airport: {flightDetails.sourceAirport || 'Loading...'}</label>
-          </div>
-          <div className="form-group">
-            <label>Destination Airport: {flightDetails.destinationAirport || 'Loading...'}</label>
-          </div>
-
-          <div className="form-group">
-            <label>Passenger Name:</label>
-            <input
-              type="text"
-              value={passengerName}
-              onChange={(e) => setPassengerName(e.target.value)}
-              className="form-control"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Passenger Contact:</label>
-            <input
-              type="text"
-              value={passengerContact}
-              onChange={(e) => setPassengerContact(e.target.value)}
-              className="form-control"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Class:</label>
-            <select value={flightClass} onChange={(e) => setFlightClass(e.target.value)} className="form-control">
-              <option value="Economy">Economy</option>
-              <option value="First Class">First Class</option>
-              <option value="Business">Business</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Number of Seats:</label>
-            <input
-              type="number"
-              value={noOfSeats}
-              onChange={(e) => setNoOfSeats(Number(e.target.value))}
-              className="form-control"
-              min="1"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Total Fare: {seatFare}</label>
-          </div>
-          <button type="submit" className="btn btn-primary">Book</button>
-        </form>
+        </div>
       </div>
     </Layout>
   );

@@ -4,7 +4,7 @@ import Login from "./Pages/Auth/Login";
 import Register from "./Pages/Auth/Register";
 
 import Home from "./Pages/Home/Home";
-import FlightSearch from "./Pages/Flight/FlightSearch";
+import FlightSearch from "./Pages/Flight/SearchFlight";
 import AddFlight from "./Pages/Flight/AddFlight";
 import BookFlight from "./Pages/Flight/BookFlight";
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<FlightSearch />} />
         <Route path="/addFlight" element={<AddFlight />} />
-        <Route path="/book/:flightId" element={<BookFlight />} />
+        <Route path="/bookFlight/:flightId" element={<BookFlight />} />
       </Routes>
     </>
   );
