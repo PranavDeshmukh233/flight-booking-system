@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const { auth, clearAuthInfo } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    alert("Logout Successful!");
+    toast.success("Logout Successfully");
     clearAuthInfo();
     navigate("/login");
   };

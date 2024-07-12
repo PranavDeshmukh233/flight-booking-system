@@ -73,3 +73,7 @@
   color: #ffefba;
   border-bottom: 1px solid #ffefba;
 }
+
+.dashboard {
+  margin-top: 100px !important;
+}

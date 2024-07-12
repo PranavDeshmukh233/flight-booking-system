@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../Layout/Layout";
 import { useNavigate, Link } from "react-router-dom";
 import "../../styles/AuthStyles.css";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -22,7 +23,7 @@ const Register = () => {
     });
 
     if (response.ok) {
-      alert("Registration successful!");
+      toast.success("Registration Successfully");
       navigate("/login");
     } else {
       console.error("Registration failed!");

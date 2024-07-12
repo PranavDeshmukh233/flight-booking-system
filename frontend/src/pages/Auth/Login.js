@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import "../../styles/AuthStyles.css";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ const Login = () => {
       console.log(data);
 
       if (data.statusCode === 200) {
-        alert("Login successful!");
+        toast.success("Login Successfully");
         const authObject = {
           email: data.users.email,
           id: data.users.id,
@@ -38,11 +39,11 @@ const Login = () => {
         Cookies.set("auth", JSON.stringify(authObject), { expires: 1 }); // Expires in 1 day
         navigate("/");
       } else {
-        alert(`Login failed: ${data.message}`);
+        toast.error(`Login failed: ${data.message}`);
       }
     } catch (error) {
       console.error("Login failed:", error.message);
-      alert(`Login failed: ${error.message}`);
+      toast.error(`Login failed: ${error.message}`);
     }
   };
 
