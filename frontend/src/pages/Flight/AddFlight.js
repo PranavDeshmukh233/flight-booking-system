@@ -3,6 +3,7 @@ import Layout from "../../Layout/Layout";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
+import AdminMenu from "../../Layout/AdminMenu";
 
 const AddFlight = () => {
   const { auth } = useContext(AuthContext);
@@ -78,7 +79,9 @@ const AddFlight = () => {
     <Layout title={"Add Flight Details"}>
       <div className="container-fluid m-3 p-3 dashboard">
         <div className="row">
-          <div className="col-md-3"></div>
+          <div className="col-md-3">
+            <AdminMenu />
+          </div>
           <div className="col-md-9">
             <h1>Add Flight Details</h1>
             <div className="m-1 w-75">

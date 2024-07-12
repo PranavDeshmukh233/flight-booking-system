@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import "../../Styles/AuthStyles.css";
+import "../../styles/AuthStyles.css";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
 
@@ -33,7 +33,7 @@ const Login = () => {
           id: data.users.id,
           token: data.token,
           role: data.users.role,
-          name: data.users.name
+          name: data.users.name,
         };
         setAuthInfo(authObject);
         Cookies.set("auth", JSON.stringify(authObject), { expires: 1 }); // Expires in 1 day

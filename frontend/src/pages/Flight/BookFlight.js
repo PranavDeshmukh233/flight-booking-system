@@ -1,15 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Layout from '../../Layout/Layout';
-import { AuthContext } from '../../Context/AuthContext';
-import '../../Styles/Booking.css';
+import React, { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Layout from "../../Layout/Layout";
+import { AuthContext } from "../../Context/AuthContext";
+import "../../styles/Booking.css";
 
 const BookingPage = () => {
   const { flightId } = useParams();
   const [flightDetails, setFlightDetails] = useState({});
-  const [passengerName, setPassengerName] = useState('');
-  const [passengerContact, setPassengerContact] = useState('');
-  const [flightClass, setFlightClass] = useState('Economy');
+  const [passengerName, setPassengerName] = useState("");
+  const [passengerContact, setPassengerContact] = useState("");
+  const [flightClass, setFlightClass] = useState("Economy");
   const [noOfSeats, setNoOfSeats] = useState(1);
   const [seatFare, setSeatFare] = useState(0);
   const { auth } = useContext(AuthContext);
@@ -18,19 +18,22 @@ const BookingPage = () => {
     const fetchFlightDetails = async () => {
       try {
         console.log(auth.token);
-        const response = await fetch(`http://localhost:1010/adminuser/flight/${flightId}`, {
-          headers: {
-            'Authorization': `Bearer ${auth.token}`,
-          },
-        });
+        const response = await fetch(
+          `http://localhost:1010/adminuser/flight/${flightId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.token}`,
+            },
+          }
+        );
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json();
-        // console.log('Fetched flight details:', data); 
+        // console.log('Fetched flight details:', data);
         setFlightDetails(data);
       } catch (error) {
-        console.error('Failed to fetch flight details:', error.message);
+        console.error("Failed to fetch flight details:", error.message);
       }
     };
 
@@ -39,11 +42,11 @@ const BookingPage = () => {
 
   useEffect(() => {
     if (flightDetails) {
-      if (flightClass === 'Economy') {
+      if (flightClass === "Economy") {
         setSeatFare(flightDetails.economyClassPrice * noOfSeats);
-      } else if (flightClass === 'First Class') {
+      } else if (flightClass === "First Class") {
         setSeatFare(flightDetails.firstClassPrice * noOfSeats);
-      } else if (flightClass === 'Business') {
+      } else if (flightClass === "Business") {
         setSeatFare(flightDetails.businessClassPrice * noOfSeats);
       }
     }
@@ -75,24 +78,29 @@ const BookingPage = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:1010/user/booking/add?userId=${auth.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${auth.token}`,
-        },
-        body: JSON.stringify(bookingData),
-      });
+      const response = await fetch(
+        `http://localhost:1010/user/booking/add?userId=${auth.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth.token}`,
+          },
+          body: JSON.stringify(bookingData),
+        }
+      );
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`Request failed with status ${response.status}: ${errorText}`);
+        throw new Error(
+          `Request failed with status ${response.status}: ${errorText}`
+        );
       }
 
       const data = await response.json();
-      alert('Booking successful!');
+      alert("Booking successful!");
     } catch (error) {
-      console.error('Booking failed:', error.message);
+      console.error("Booking failed:", error.message);
       alert(`Booking failed: ${error.message}`);
     }
   };
@@ -102,47 +110,55 @@ const BookingPage = () => {
       <div className="container mt-5">
         <div className="card">
           <div className="card-header text-center">
-            <h5 className="card-title">Flight : {flightDetails.flightNumber || 'Loading...'}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{flightDetails.airplane || 'Loading...'}</h6>
+            <h5 className="card-title">
+              Flight : {flightDetails.flightNumber || "Loading..."}
+            </h5>
+            <h6 className="card-subtitle mb-2 text-muted">
+              {flightDetails.airplane || "Loading..."}
+            </h6>
           </div>
           <div className="card-body">
-          <div className="row">
+            <div className="row">
               <div className="col-md-6">
                 <p className="card-text">
-                  <strong>From</strong> 
+                  <strong>From</strong>
                 </p>
               </div>
               <div className="col-md-6">
                 <p className="card-text">
-                  <strong>To</strong> 
+                  <strong>To</strong>
                 </p>
               </div>
             </div>
             <div className="row">
               <div className="col-md-6">
                 <p className="card-text">
-                  {flightDetails.sourceAirport || 'Loading...'}
+                  {flightDetails.sourceAirport || "Loading..."}
                 </p>
               </div>
               <div className="col-md-6">
                 <p className="card-text">
-                  {flightDetails.destinationAirport || 'Loading...'}
+                  {flightDetails.destinationAirport || "Loading..."}
                 </p>
               </div>
             </div>
             <div className="row">
               <div className="col-md-6">
                 <p className="card-text">
-                  {flightDetails.departureTime ? new Date(flightDetails.departureTime).toLocaleString() : 'Loading...'}
+                  {flightDetails.departureTime
+                    ? new Date(flightDetails.departureTime).toLocaleString()
+                    : "Loading..."}
                 </p>
               </div>
               <div className="col-md-6">
                 <p className="card-text">
-                  {flightDetails.arrivalTime ? new Date(flightDetails.arrivalTime).toLocaleString() : 'Loading...'}
+                  {flightDetails.arrivalTime
+                    ? new Date(flightDetails.arrivalTime).toLocaleString()
+                    : "Loading..."}
                 </p>
               </div>
             </div>
-    
+
             <form onSubmit={handleBooking}>
               <div className="row">
                 <div className="col-md-6">
@@ -174,7 +190,11 @@ const BookingPage = () => {
                 <div className="col-md-6">
                   <div className="form-group">
                     <label>Class:</label>
-                    <select value={flightClass} onChange={(e) => setFlightClass(e.target.value)} className="form-control">
+                    <select
+                      value={flightClass}
+                      onChange={(e) => setFlightClass(e.target.value)}
+                      className="form-control"
+                    >
                       <option value="Economy">Economy</option>
                       <option value="First Class">First Class</option>
                       <option value="Business">Business</option>
@@ -198,7 +218,9 @@ const BookingPage = () => {
               <div className="form-group">
                 <label>Total Fare: {seatFare}</label>
               </div>
-              <button type="submit" className="btn btn-primary btn-block">Book</button>
+              <button type="submit" className="btn btn-primary btn-block">
+                Book
+              </button>
             </form>
           </div>
         </div>
