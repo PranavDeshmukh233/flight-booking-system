@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
-import "../../styles/Booking.css";
+import "../../Styles/Booking.css";
 
 const BookingPage = () => {
   const { flightId } = useParams();
@@ -118,7 +118,7 @@ const BookingPage = () => {
             </h6>
           </div>
           <div className="card-body">
-            <div className="row">
+            <div className="row mg-bt">
               <div className="col-md-6">
                 <p className="card-text">
                   <strong>From</strong>
@@ -142,7 +142,7 @@ const BookingPage = () => {
                 </p>
               </div>
             </div>
-            <div className="row">
+            <div className="row mg-bt">
               <div className="col-md-6">
                 <p className="card-text">
                   {flightDetails.departureTime

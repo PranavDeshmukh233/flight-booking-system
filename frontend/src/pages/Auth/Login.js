@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import "../../styles/AuthStyles.css";
+import "../../Styles/AuthStyles.css";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
 

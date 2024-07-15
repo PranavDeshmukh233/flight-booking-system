@@ -8,6 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    alert("Logout Sucessful!");
     toast.success("Logout Successfully");
     clearAuthInfo();
     navigate("/login");
@@ -36,7 +37,7 @@ const Header = () => {
               <NavLink
                 to="/"
                 className="nav-link"
-                style={{ fontWeight: "bold" }}
+                style={{ fontWeight: "bold", textTransform: "none" }}
               >
                 Home
               </NavLink>
@@ -47,9 +48,18 @@ const Header = () => {
                   <NavLink
                     to="/profile"
                     className="nav-link"
-                    style={{ fontWeight: "bold" }}
+                    style={{ fontWeight: "bold",  textTransform: "none" }}
                   >
                     Profile
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    to="/search"
+                    className="nav-link"
+                    style={{ fontWeight: "bold",  textTransform: "none" }}
+                  >
+                    Search
                   </NavLink>
                 </li>
                 <li className="nav-item">
@@ -61,13 +71,15 @@ const Header = () => {
                     Logout
                   </button>
                 </li>
+                
+                
               </>
             ) : (
               <li className="nav-item">
                 <NavLink
                   to="/login"
                   className="nav-link"
-                  style={{ fontWeight: "bold" }}
+                  style={{ fontWeight: "bold", }}
                 >
                   Login
                 </NavLink>

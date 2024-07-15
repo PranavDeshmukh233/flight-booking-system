@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
-import "../../styles/FlightSearch.css";
+import "../../Styles/FlightSearch.css";
 import UserMenu from "../../Layout/UserMenu";
 
 const FlightSearch = () => {
@@ -51,10 +51,6 @@ const FlightSearch = () => {
     <Layout title="Flight Search">
       <div className="container-flui m-3 p-3 dashboard">
         <div className="row">
-          <div className="col-md-3">
-            <UserMenu />
-          </div>
-          <div className="col-md-9">
             <div className="form-container" style={{ minHeight: "90vh" }}>
               <form onSubmit={handleSearch} className="search-form">
                 <h5 className="title">Flights</h5>
@@ -139,7 +135,6 @@ const FlightSearch = () => {
                 </div>
               )}
             </div>
-          </div>
         </div>
       </div>
     </Layout>
