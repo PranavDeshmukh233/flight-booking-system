@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user/booking")
+@RequestMapping("/adminuser/booking")
 public class BookingController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class BookingController {
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/byBookingId/{id}")
     public ResponseEntity<Booking> getBookingById(@PathVariable Long id) {
         Booking booking = bookingService.getBookingById(id);
         return new ResponseEntity<>(booking, HttpStatus.OK);
@@ -39,5 +39,11 @@ public class BookingController {
     public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
         bookingService.deleteBooking(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/byUserId")
+    public ResponseEntity<List<Booking>> getBookingsByUserId(@RequestParam Long userId) {
+        List<Booking> userBookings = bookingService.getBookingsByUserId(userId);
+        return new ResponseEntity<>(userBookings, HttpStatus.OK);
     }
 }

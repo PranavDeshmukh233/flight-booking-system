@@ -26,10 +26,6 @@
   padding: 3px;
 }
 
-.search-form button {
-  width: 100%;
-}
-
 .table-bordered {
   width: 100%;
   border-collapse: collapse;
@@ -55,8 +51,8 @@
   background-color: #ddd;
 }
 
-.btn-book {
-  background-color: #000000;
+.button {
+  background-color: #3d3d3d;;
   border: 1px solid #000000;
   color: white;
   padding: 8px 16px;
@@ -68,7 +64,7 @@
   border-radius: 0;
 }
 
-.btn-book:hover {
-  background-color: #333333;
+.button:hover {
+  background-color: #434343;
   border-color: #333333;
 }

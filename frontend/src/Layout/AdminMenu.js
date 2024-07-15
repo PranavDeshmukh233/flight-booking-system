@@ -10,15 +10,15 @@ const AdminMenu = () => {
             to="/addFlight"
             className="list-group-item list-group-item-action"
           >
-            Create Flight Record
+            Add Flight
           </NavLink>
           <NavLink
             to="/addAirport"
             className="list-group-item list-group-item-action"
           >
-            Create Airport Record
+            Add Airport
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/addFlight"
             className="list-group-item list-group-item-action"
           >
@@ -29,7 +29,7 @@ const AdminMenu = () => {
             className="list-group-item list-group-item-action"
           >
             Update flight Details
-          </NavLink>
+          </NavLink> */}
           {/* <NavLink
             to="/dashboard/admin/users"
             className="list-group-item list-group-item-action"

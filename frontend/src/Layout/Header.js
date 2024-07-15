@@ -48,7 +48,7 @@ const Header = () => {
                   <NavLink
                     to="/profile"
                     className="nav-link"
-                    style={{ fontWeight: "bold",  textTransform: "none" }}
+                    style={{ fontWeight: "bold", textTransform: "none" }}
                   >
                     Profile
                   </NavLink>
@@ -57,11 +57,31 @@ const Header = () => {
                   <NavLink
                     to="/search"
                     className="nav-link"
-                    style={{ fontWeight: "bold",  textTransform: "none" }}
+                    style={{ fontWeight: "bold", textTransform: "none" }}
                   >
                     Search
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink
+                    to="/bookings"
+                    className="nav-link"
+                    style={{ fontWeight: "bold", textTransform: "none" }}
+                  >
+                    Bookings
+                  </NavLink>
+                </li>
+                {auth.role === "ADMIN" && (
+                  <li className="nav-item">
+                    <NavLink
+                      to="/addFlight"
+                      className="nav-link"
+                      style={{ fontWeight: "bold", textTransform: "none" }}
+                    >
+                      AddFlight
+                    </NavLink>
+                  </li>
+                )}
                 <li className="nav-item">
                   <button
                     className="nav-link btn btn-link"
@@ -71,15 +91,13 @@ const Header = () => {
                     Logout
                   </button>
                 </li>
-                
-                
               </>
             ) : (
               <li className="nav-item">
                 <NavLink
                   to="/login"
                   className="nav-link"
-                  style={{ fontWeight: "bold", }}
+                  style={{ fontWeight: "bold" }}
                 >
                   Login
                 </NavLink>

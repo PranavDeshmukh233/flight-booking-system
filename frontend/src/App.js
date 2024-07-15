@@ -7,7 +7,8 @@ import Home from "./Pages/Home/Home";
 import FlightSearch from "./Pages/Flight/SearchFlight";
 import AddFlight from "./Pages/Flight/AddFlight";
 import BookFlight from "./Pages/Flight/BookFlight";
-import AddAirport from "./Pages/Flight/addAirport";
+import AddAirport from "./Pages/Flight/AddAirport";
+import ViewBookings from "./Pages/Bookings/ViewBookings";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/addFlight" element={<AddFlight />} />
         <Route path="/addAirport" element={<AddAirport />} />
         <Route path="/bookFlight/:flightId" element={<BookFlight />} />
+        <Route path="/bookings" element={<ViewBookings />} />
       </Routes>
     </>
   );

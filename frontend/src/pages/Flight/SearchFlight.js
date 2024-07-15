@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
 import "../../Styles/FlightSearch.css";
-import UserMenu from "../../Layout/UserMenu";
 
 const FlightSearch = () => {
   const [sourceAirport, setSourceAirport] = useState("");
@@ -49,11 +48,11 @@ const FlightSearch = () => {
 
   return (
     <Layout title="Flight Search">
-      <div className="container-flui m-3 p-3 dashboard">
+      <div className="container-fluid">
         <div className="row">
             <div className="form-container" style={{ minHeight: "90vh" }}>
               <form onSubmit={handleSearch} className="search-form">
-                <h5 className="title">Flights</h5>
+                <h5 className="title">Search Flights</h5>
 
                 <div className="form-group">
                   <input
@@ -72,15 +71,15 @@ const FlightSearch = () => {
                     placeholder="Enter Destination Airport"
                     required
                   />
-                  <button type="submit" className="btn btn-primary">
-                    SEARCH
+                  <button type="submit" className="button">
+                    Search
                   </button>
                 </div>
               </form>
 
               {flights.length > 0 && (
                 <div className="mt-4">
-                  <h4 className="title">Search Results</h4>
+                  <h4 className="title">Flights</h4>
                   <table className="table table-bordered">
                     <thead>
                       <tr>
@@ -122,7 +121,7 @@ const FlightSearch = () => {
                           <td>{flight.status}</td>
                           <td>
                             <button
-                              className="btn-book"
+                              className="button"
                               onClick={() => handleBook(flight.id)}
                             >
                               Book

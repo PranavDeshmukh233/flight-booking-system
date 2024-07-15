@@ -19,7 +19,7 @@ public class User implements UserDetails {
     private String email;
     private String name;
     private String role;
-    private String password; // Add this field
+    private String password;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,0 +1,48 @@
+.dashboard {
+    background-color: #f8f9fa;
+  }
+  
+  .form-container {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #ffffff;
+  }
+  
+  .table thead th {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .table tbody td {
+    text-align: center;
+  }
+  
+  .table-bordered {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 18px;
+    color: #6c757d;
+  }
+  

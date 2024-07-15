@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
-import "../../Styles/Booking.css";
+import "../../Styles/BookFlight.css";
 
 const BookingPage = () => {
   const { flightId } = useParams();
@@ -79,7 +79,7 @@ const BookingPage = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:1010/user/booking/add?userId=${auth.id}`,
+        `http://localhost:1010/adminuser/booking/add?userId=${auth.id}`,
         {
           method: "POST",
           headers: {
@@ -218,7 +218,7 @@ const BookingPage = () => {
               <div className="form-group">
                 <label>Total Fare: {seatFare}</label>
               </div>
-              <button type="submit" className="btn btn-primary btn-block">
+              <button type="submit" className="btn-block button">
                 Book
               </button>
             </form>
