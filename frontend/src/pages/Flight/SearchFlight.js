@@ -17,7 +17,7 @@ const FlightSearch = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:1010/user/flight/search?sourceAirport=${sourceAirport}&destinationAirport=${destinationAirport}`,
+        `http://localhost:1010/${auth.role.toLowerCase()}/flight/search?sourceAirport=${sourceAirport}&destinationAirport=${destinationAirport}`,
         {
           method: "GET",
           headers: {

@@ -38,6 +38,7 @@
   }
   .card-text {
     margin-bottom: .5rem; 
+    text-align: left;
   }
   
   .form-group {
