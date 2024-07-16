@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import React, { createContext, useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const storedAuth = Cookies.get('auth');
+    const storedAuth = Cookies.get("auth");
     if (storedAuth) {
       setAuth(JSON.parse(storedAuth));
     }
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const setAuthInfo = ({ email, id, token, role, name }) => {
     const authObject = { email, id, token, role, name };
     setAuth(authObject);
-    Cookies.set('auth', JSON.stringify(authObject), { expires: 1 }); 
+    Cookies.set("auth", JSON.stringify(authObject), { expires: 1 });
   };
 
   const clearAuthInfo = () => {
@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }) => {
       id: null,
       token: null,
       role: null,
-      name: null
+      name: null,
     });
-    Cookies.remove('auth');
+    Cookies.remove("auth");
   };
 
   useEffect(() => {

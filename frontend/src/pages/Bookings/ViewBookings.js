@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
-import Layout from '../../Layout/Layout';
-import '../../Styles/ViewBookings.css';
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Context/AuthContext";
+import Layout from "../../Layout/Layout";
+import "../../Styles/ViewBookings.css";
 
 const Bookings = () => {
   const { auth } = useContext(AuthContext);
@@ -13,9 +13,9 @@ const Bookings = () => {
         const response = await fetch(
           `http://localhost:1010/adminuser/booking/byUserId?userId=${auth.id}`,
           {
-            method: 'GET',
+            method: "GET",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
               Authorization: `Bearer ${auth.token}`,
             },
           }
@@ -29,10 +29,10 @@ const Bookings = () => {
         }
 
         const data = await response.json();
-        console.log('Bookings data:', data);
+        console.log("Bookings data:", data);
         setBookings(data);
       } catch (error) {
-        console.error('Fetching bookings failed:', error.message);
+        console.error("Fetching bookings failed:", error.message);
         alert(`Fetching bookings failed: ${error.message}`);
       }
     };
@@ -46,7 +46,7 @@ const Bookings = () => {
     <Layout title="User Bookings">
       <div className="container-fluid">
         <div className="row">
-          <div className="form-container" style={{ minHeight: '90vh' }}>
+          <div className="form-container" style={{ minHeight: "90vh" }}>
             <h5 className="title">My Bookings</h5>
             {bookings.length > 0 ? (
               <table className="table table-bordered">
@@ -68,7 +68,9 @@ const Bookings = () => {
                     <tr key={booking.id}>
                       <td>{booking.id}</td>
                       <td>{booking.flightNumber}</td>
-                      <td>{new Date(booking.departureTime).toLocaleString()}</td>
+                      <td>
+                        {new Date(booking.departureTime).toLocaleString()}
+                      </td>
                       <td>{new Date(booking.arrivalTime).toLocaleString()}</td>
                       <td>{booking.sourceAirport}</td>
                       <td>{booking.destinationAirport}</td>

@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
 import Layout from "../../Layout/Layout";
 import { AuthContext } from "../../Context/AuthContext";
 import "../../Styles/BookFlight.css";
 
 const BookingPage = () => {
   const { flightId } = useParams();
+  const navigate = useNavigate(); // Initialize useNavigate
   const [flightDetails, setFlightDetails] = useState({});
   const [passengerName, setPassengerName] = useState("");
   const [passengerContact, setPassengerContact] = useState("");
@@ -30,7 +31,6 @@ const BookingPage = () => {
           throw new Error(`Request failed with status ${response.status}`);
         }
         const data = await response.json();
-        // console.log('Fetched flight details:', data);
         setFlightDetails(data);
       } catch (error) {
         console.error("Failed to fetch flight details:", error.message);
@@ -72,7 +72,7 @@ const BookingPage = () => {
       destinationAirport: flightDetails.destinationAirport,
       flightClass,
       seatFare,
-      noOfseat: noOfSeats,
+      noofseat: noOfSeats,
       bookingTime: new Date().toISOString(),
       userId: auth.id,
     };
@@ -99,6 +99,8 @@ const BookingPage = () => {
 
       const data = await response.json();
       alert("Booking successful!");
+
+      navigate("/bookings");
     } catch (error) {
       console.error("Booking failed:", error.message);
       alert(`Booking failed: ${error.message}`);

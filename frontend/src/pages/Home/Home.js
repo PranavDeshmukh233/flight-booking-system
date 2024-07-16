@@ -17,14 +17,14 @@ const Home = () => {
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    color: "white"
+    color: "white",
   };
 
   const textStyle = {
     color: "black",
     fontWeight: "700",
     fontSize: "3rem",
-    textAlign: "center"
+    textAlign: "center",
   };
 
   const buttonStyle = {
@@ -40,11 +40,11 @@ const Home = () => {
     transition: "background-color 0.3s ease",
     display: "inline-block",
     width: "170px",
-    textAlign: "center"
+    textAlign: "center",
   };
 
   const buttonHoverStyle = {
-    backgroundColor: "#002752"
+    backgroundColor: "#002752",
   };
 
   const handleButtonClick = () => {
@@ -59,11 +59,18 @@ const Home = () => {
     <Layout title="Home">
       <div className="container-fluid m-0 p-0" style={backgroundStyle}>
         <div className="row w-100 m-0 d-flex flex-column align-items-center justify-content-center">
-          <h3 className="text-center w-100" style={textStyle}>Welcome to SkyTrip!</h3>
+          <h3 className="text-center w-100" style={textStyle}>
+            Welcome to SkyTrip!
+          </h3>
           <button
             style={buttonStyle}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-            onMouseLeave={(e) => (e.target.style.backgroundColor = buttonStyle.backgroundColor)}
+            onMouseEnter={(e) =>
+              (e.target.style.backgroundColor =
+                buttonHoverStyle.backgroundColor)
+            }
+            onMouseLeave={(e) =>
+              (e.target.style.backgroundColor = buttonStyle.backgroundColor)
+            }
             onClick={handleButtonClick}
           >
             Search Flight
